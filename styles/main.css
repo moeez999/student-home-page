@@ -1,0 +1,32 @@
+/**
+ * Latingles Student Home - Main Stylesheet
+ * 
+ * This is the main entry point for all CSS styles
+ * Import order is important for proper cascade
+ * 
+ * @author Latingles Development Team
+ * @version 2.0.0
+ */
+
+/* =================== FOUNDATION LAYER =================== */
+/* CSS custom properties (variables) - must be loaded first */
+/* @import "./_variables.css"; */
+
+/* Base styles and CSS reset */
+/* @import "./_base.css"; */
+
+/* =================== COMPONENT LAYER =================== */
+/* Core components - import main style.css first */
+@import "./style.css";
+
+/* Feature components */
+@import "./components/calendar.css";
+@import "./components/MessageBox.css";
+@import "./components/TransferComplete.css";
+@import "./components/group-subscription.css";
+
+/* Models */
+@import "./components/models/give-feedback-to-group/index.css";
+@import "./components/models/give-feedback-to-teacher/index.css";
+@import "./components/models/report-a-issue/index.css";
+/* =================== LAYOUT STYLES =================== */

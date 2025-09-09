@@ -1,0 +1,521 @@
+/**
+ * Navigation Component Styles
+ * 
+ * Styles for the main navigation bar and related components
+ * Following BEM methodology for class naming
+ */
+
+/* =================== MAIN NAVIGATION =================== */
+
+.navbar {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-8) var(--space-5) var(--space-4);
+  background-color: var(--bg-primary);
+  border-bottom: var(--border-width-1) solid var(--color-gray-200);
+  position: sticky;
+  top: 0;
+  z-index: var(--z-sticky);
+  transition: var(--transition-colors);
+}
+
+@media (min-width: 768px) {
+  .navbar {
+    padding: var(--space-8) var(--space-6) var(--space-4);
+  }
+}
+
+@media (min-width: 1024px) {
+  .navbar {
+    padding: var(--space-8) var(--space-8) var(--space-4);
+  }
+}
+
+/* =================== LOGO =================== */
+
+.navbar__logo {
+  width: 172px;
+  height: auto;
+  transition: var(--transition-transform);
+}
+
+.navbar__logo:hover {
+  transform: scale(1.02);
+}
+
+@media (max-width: 768px) {
+  .navbar__logo {
+    width: 140px;
+  }
+}
+
+/* =================== RIGHT SIDE CONTAINER =================== */
+
+.navbar__right {
+  display: flex;
+  gap: var(--space-4);
+  align-items: stretch;
+  justify-content: center;
+}
+
+/* =================== OPTIONS CONTAINER =================== */
+
+.navbar__options {
+  display: flex;
+  gap: var(--space-4);
+  align-items: center;
+  justify-content: center;
+}
+
+/* =================== SUBSCRIBE BUTTON =================== */
+
+.navbar__subscribe-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-2) var(--space-5);
+  border: var(--border-width-1) solid var(--color-gray-300);
+  border-radius: var(--radius-lg);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-sm);
+  cursor: pointer;
+  position: relative;
+  transition: var(--transition-all);
+  text-decoration: none;
+}
+
+.navbar__subscribe-btn:hover {
+  background-color: var(--bg-secondary);
+  border-color: var(--color-gray-400);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-sm);
+}
+
+.navbar__subscribe-btn:active {
+  transform: translateY(0);
+}
+
+.navbar__subscribe-btn:focus-visible {
+  outline-offset: 4px;
+}
+
+/* =================== SUBSCRIBE POPUP =================== */
+
+.subscribe-popup {
+  position: absolute;
+  top: calc(100% + var(--space-2));
+  right: 0;
+  width: 583px;
+  max-width: 90vw;
+  max-height: 417px;
+  background-color: var(--bg-modal);
+  border: var(--border-width-1) solid var(--color-gray-200);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-modal);
+  padding: var(--space-8) var(--space-10) var(--space-4);
+  z-index: var(--z-popover);
+  cursor: auto;
+  
+  /* Animation states */
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-var(--space-2)) scale(0.95);
+  transition: var(--transition-opacity), var(--transition-transform);
+}
+
+.subscribe-popup.active {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0) scale(1);
+}
+
+@media (max-width: 640px) {
+  .subscribe-popup {
+    width: calc(100vw - var(--space-8));
+    right: calc(-100vw + 100% + var(--space-4));
+    padding: var(--space-6);
+  }
+}
+
+/* =================== POPUP CONTENT =================== */
+
+.subscribe-popup__content {
+  width: 100%;
+  max-height: 305px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  border-bottom: var(--border-width-1) solid var(--color-gray-300);
+  padding-bottom: var(--space-6);
+  margin-bottom: var(--space-4);
+}
+
+.subscribe-popup__section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.subscribe-popup__heading {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-medium);
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.subscribe-popup__cards {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+/* =================== POPUP CARDS =================== */
+
+.subscribe-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  padding: var(--space-3);
+  border-radius: var(--radius-md);
+  transition: var(--transition-colors);
+}
+
+.subscribe-card:hover {
+  background-color: var(--bg-secondary);
+}
+
+.subscribe-card__left {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  flex: 1;
+  min-width: 0;
+}
+
+.subscribe-card__avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: var(--radius-full);
+  overflow: hidden;
+  flex-shrink: 0;
+  border: 2px solid var(--color-gray-200);
+}
+
+.subscribe-card__avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.subscribe-card__info {
+  flex: 1;
+  min-width: 0;
+}
+
+.subscribe-card__header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-bottom: var(--space-1);
+}
+
+.subscribe-card__name {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-medium);
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.subscribe-card__dot {
+  width: 4px;
+  height: 4px;
+  background-color: var(--color-gray-400);
+  border-radius: var(--radius-full);
+  flex-shrink: 0;
+}
+
+.subscribe-card__language {
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+.subscribe-card__status {
+  font-size: var(--font-size-sm);
+  color: var(--text-tertiary);
+  margin: 0;
+}
+
+.subscribe-card__action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-2) var(--space-4);
+  background-color: var(--color-primary);
+  color: var(--text-inverse);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  border: none;
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  cursor: pointer;
+  transition: var(--transition-colors);
+  flex-shrink: 0;
+}
+
+.subscribe-card__action:hover {
+  background-color: var(--color-primary-dark);
+}
+
+.subscribe-card__action:focus-visible {
+  outline-color: var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* =================== TRANSFER LESSONS BUTTON =================== */
+
+.transfer-lessons-btn {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-4);
+  background-color: var(--bg-secondary);
+  border: var(--border-width-1) solid var(--color-gray-300);
+  border-radius: var(--radius-md);
+  color: var(--text-primary);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  cursor: pointer;
+  transition: var(--transition-all);
+  text-decoration: none;
+  width: 100%;
+  justify-content: center;
+}
+
+.transfer-lessons-btn:hover {
+  background-color: var(--bg-tertiary);
+  border-color: var(--color-gray-400);
+}
+
+.transfer-lessons-btn svg {
+  width: 20px;
+  height: 18px;
+  fill: currentColor;
+}
+
+/* =================== BALANCE DISPLAY =================== */
+
+.navbar__balance {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-2) var(--space-5);
+  border: var(--border-width-1) solid var(--color-gray-300);
+  border-radius: var(--radius-lg);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-sm);
+  cursor: pointer;
+  position: relative;
+  transition: var(--transition-all);
+}
+
+.navbar__balance:hover {
+  background-color: var(--bg-secondary);
+  border-color: var(--color-gray-400);
+}
+
+/* =================== LANGUAGE DROPDOWN =================== */
+
+.navbar__language-dropdown {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-4);
+  border: var(--border-width-1) solid var(--color-gray-300);
+  border-radius: var(--radius-lg);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-size: var(--font-size-sm);
+  cursor: pointer;
+  position: relative;
+  transition: var(--transition-all);
+}
+
+.navbar__language-dropdown:hover {
+  background-color: var(--bg-secondary);
+  border-color: var(--color-gray-400);
+}
+
+.navbar__language-dropdown svg {
+  width: 24px;
+  height: 24px;
+  fill: currentColor;
+  transition: var(--transition-transform);
+}
+
+.navbar__language-dropdown.active svg {
+  transform: rotate(180deg);
+}
+
+/* =================== NOTIFICATION ICONS =================== */
+
+.navbar__notifications {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.navbar__notification {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background-color: transparent;
+  border: none;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: var(--transition-colors);
+}
+
+.navbar__notification:hover {
+  background-color: var(--bg-secondary);
+}
+
+.navbar__notification svg {
+  width: 20px;
+  height: 20px;
+  fill: var(--text-primary);
+}
+
+.navbar__notification-badge {
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  min-width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-error);
+  color: var(--text-inverse);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  border-radius: var(--radius-full);
+  padding: 0 var(--space-1);
+}
+
+/* =================== PROFILE DROPDOWN =================== */
+
+.navbar__profile {
+  position: relative;
+  cursor: pointer;
+}
+
+.navbar__profile-image {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-full);
+  overflow: hidden;
+  border: 2px solid var(--color-gray-300);
+  transition: var(--transition-all);
+}
+
+.navbar__profile-image:hover {
+  border-color: var(--color-primary);
+  transform: scale(1.05);
+}
+
+.navbar__profile-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* =================== MOBILE RESPONSIVE =================== */
+
+@media (max-width: 768px) {
+  .navbar__options {
+    gap: var(--space-2);
+  }
+  
+  .navbar__subscribe-btn,
+  .navbar__balance {
+    padding: var(--space-2) var(--space-3);
+    font-size: var(--font-size-xs);
+  }
+  
+  .navbar__language-dropdown {
+    padding: var(--space-2) var(--space-3);
+  }
+  
+  .navbar__notifications {
+    gap: var(--space-2);
+  }
+  
+  .navbar__notification {
+    width: 36px;
+    height: 36px;
+  }
+  
+  .navbar__profile-image {
+    width: 36px;
+    height: 36px;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar {
+    padding: var(--space-4) var(--space-4) var(--space-3);
+  }
+  
+  .navbar__right {
+    gap: var(--space-2);
+  }
+  
+  .navbar__options {
+    gap: var(--space-1);
+  }
+  
+  /* Hide text on very small screens */
+  .navbar__subscribe-btn span,
+  .navbar__balance span {
+    display: none;
+  }
+}
+
+/* =================== ACCESSIBILITY IMPROVEMENTS =================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .subscribe-popup,
+  .navbar__logo,
+  .navbar__profile-image,
+  .navbar__language-dropdown svg {
+    transition: none;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .navbar {
+    border-bottom-color: var(--text-primary);
+  }
+  
+  .navbar__subscribe-btn,
+  .navbar__balance,
+  .navbar__language-dropdown {
+    border-color: var(--text-primary);
+  }
+}
+
