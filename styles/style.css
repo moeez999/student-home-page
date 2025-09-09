@@ -7281,7 +7281,7 @@ button.backdrop-level-2-close {
   }
   /* /my */
   .mobile {
-    display: inline-block;
+    display: flex;
   }
   .desktop {
     display: none !important;
