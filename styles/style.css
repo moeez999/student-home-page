@@ -5089,7 +5089,7 @@ button.backdrop-level-2-close {
 }
 
 .mobile {
-  display: none;
+  display: none !important;
 }
 .desktop {
   display: flex;
@@ -5098,7 +5098,7 @@ button.backdrop-level-2-close {
   display: flex;
 }
 .mobile-lg {
-  display: none;
+  display: none !important;
 }
 /* transferLessonsTo */
 /* ================= */
@@ -7059,7 +7059,7 @@ button.backdrop-level-2-close {
     max(16px, env(safe-area-inset-right));
   box-shadow: 0 -10px 28px rgba(0, 0, 0, 0.16);
 
-  z-index: 1;
+  z-index: 10;
 }
 
 .tabbar a {
@@ -7094,6 +7094,19 @@ button.backdrop-level-2-close {
   color: rgba(255, 88, 60, 1);
 }
 
+.tabbar a.active .active-sub-2 {
+  display: block;
+}
+.tabbar a.active .active-sub-1 {
+  display: none;
+}
+.tabbar .active-sub-1 {
+  display: block;
+}
+
+.tabbar .active-sub-2 {
+  display: none;
+}
 /* Responsive (Media Query) */
 /* ======================== */
 @media screen and (max-width: 1280px) {
@@ -7135,7 +7148,7 @@ button.backdrop-level-2-close {
     width: calc(650px - 2px);
   }
   .mobile-lg {
-    display: flex;
+    display: flex !important;
   }
   .mobile-nav-icons button {
     border: none;
@@ -7281,7 +7294,7 @@ button.backdrop-level-2-close {
   }
   /* /my */
   .mobile {
-    display: flex;
+    display: flex !important;
   }
   .desktop {
     display: none !important;

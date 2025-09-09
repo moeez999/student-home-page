@@ -104,3 +104,17 @@ function initializeApp() {
 
 // =================== APP STARTUP ===================
 document.addEventListener("DOMContentLoaded", initializeApp);
+
+const tabs = document.querySelectorAll(".tabbar .tab");
+
+tabs.forEach((tab) => {
+  tab.addEventListener("click", function (e) {
+    e.preventDefault(); // Prevent navigation (optional)
+
+    // Remove 'active' class from all tabs
+    tabs.forEach((t) => t.classList.remove("active"));
+
+    // Add 'active' to the clicked tab
+    this.classList.add("active");
+  });
+});
